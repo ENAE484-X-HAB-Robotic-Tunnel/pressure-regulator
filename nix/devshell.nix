@@ -78,6 +78,7 @@ perSystem.devshell.mkShell (
                     pandas
                     matplotlib
                     numpy
+                    pyserial
                     scipy
                     scikit-image
                     tkinter
