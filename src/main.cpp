@@ -4,8 +4,7 @@
 #include "flight_mode.h"
 #include "test_mode.h"
 
-// the AVR firmware has no argv, so the only runtime selector is the
-// PIN_MODE_SELECT pin polled during the first second after reset
+// Runtime selector is PIN_MODE_SELECT pin polled during first sec after reset
 
 namespace {
 bool g_in_test_mode = false;

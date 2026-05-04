@@ -13,6 +13,7 @@
 #define SENSOR_MIN_VOLTAGE 0.5f
 #define SENSOR_MAX_VOLTAGE 4.5f
 #define SENSOR_MAX_PSI 5.0f
+#define SENSOR_TUNING_OFFSET 103
 #define PSI_TO_KPA 6.89476f
 
 // 10-bit ADC against default 5 V analog reference
@@ -21,7 +22,7 @@
 
 // Control thresholds
 #define PRESSURE_TOLERANCE_FRAC 0.005f // +/- 0.5 % of setpoint
-#define OVERPRESSURE_FRAC 1.25f        // deflate when above 125 % of setpoint
+#define OVERPRESSURE_FRAC 1.05f        // deflate when above 105 % of setpoint
 
 // Loop timing
 #define TELEMETRY_INTERVAL_MS 50UL // 20 Hz
@@ -36,7 +37,8 @@
 #define MODE_SELECT_WINDOW_MS 1000UL
 
 inline float adc_to_kpa(int adc) {
-    float voltage = (float)adc * (ADC_VREF / (float)ADC_MAX);
+    float voltage =
+        (float)(adc - SENSOR_TUNING_OFFSET) * (ADC_VREF / (float)ADC_MAX);
     float frac = (voltage - SENSOR_MIN_VOLTAGE) /
                  (SENSOR_MAX_VOLTAGE - SENSOR_MIN_VOLTAGE);
     if (frac < 0.0f)
