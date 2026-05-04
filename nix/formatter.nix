@@ -23,4 +23,11 @@ inputs.treefmt-nix.lib.mkWrapper pkgs {
         ruff-check.enable = true;
         ruff-format.enable = true;
     };
+
+    # c/cpp
+    programs.clang-format.enable = true;
+    settings.formatter.clang-format = {
+        options = [ "-style={BasedOnStyle: LLVM, IndentWidth: 4}" ];
+    };
+    # programs.clang-tidy.enable = true;
 }

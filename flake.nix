@@ -5,7 +5,7 @@
         # nixpkgs
         # NOTE: nixpkgs follows ros-overlay, not the other way around!
         # nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
-        # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
         nixpkgs.follows = "nix-ros-overlay/nixpkgs";
         systems.url = "github:nix-systems/default-linux";
 
@@ -47,6 +47,13 @@
                 flake-utils.follows = "flake-utils";
             };
         };
+
+        # nix + arduino (thanks to bouk)
+        arduino-nix.url = "github:bouk/arduino-nix";
+        arduino-index = {
+            url = "github:bouk/arduino-indexes";
+            flake = false;
+        };
     };
 
     outputs =
@@ -58,6 +65,9 @@
                     inputs.nixgl.overlay
                     inputs.nix-ros-overlay.overlays.default
                     (_final: prev: { vcstool = prev.vcs2l; })
+                    (inputs.arduino-nix.overlay)
+                    (inputs.arduino-nix.mkArduinoPackageOverlay (inputs.arduino-index + "/index/package_index.json"))
+                    (inputs.arduino-nix.mkArduinoLibraryOverlay (inputs.arduino-index + "/index/library_index.json"))
                 ];
                 prefix = "./nix/";
             };

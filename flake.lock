@@ -1,5 +1,36 @@
 {
   "nodes": {
+    "arduino-index": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777853631,
+        "narHash": "sha256-DT9ugLq3tx4euEIP3Q6q6Ai97Mqkzm86TEPgfB5Fx8A=",
+        "owner": "bouk",
+        "repo": "arduino-indexes",
+        "rev": "714d06e8f8af69e326a9c57fdb1d0be1cfb9e65b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bouk",
+        "repo": "arduino-indexes",
+        "type": "github"
+      }
+    },
+    "arduino-nix": {
+      "locked": {
+        "lastModified": 1758613361,
+        "narHash": "sha256-ulyRVe492In6I/jXhCYzLuPwoQqv+jhDLHUikK0jdh0=",
+        "owner": "bouk",
+        "repo": "arduino-nix",
+        "rev": "cfa82ced5b5d9436edec9238cf493f6b2c643869",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bouk",
+        "repo": "arduino-nix",
+        "type": "github"
+      }
+    },
     "blueprint": {
       "inputs": {
         "nixpkgs": [
@@ -110,11 +141,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1776781578,
-        "narHash": "sha256-7borAImdUVPRfLu9RiXg948cpvd5/DBHeKd6yXP51pU=",
+        "lastModified": 1777729716,
+        "narHash": "sha256-8Esta/6Cay1cxqfqL4kvfj5LOsvCAOdgouxYZZxtZ5M=",
         "owner": "lopsided98",
         "repo": "nixpkgs",
-        "rev": "3e81877bb6cfaa68967de225d4977c4ecab4bcac",
+        "rev": "c881aa5aa0854629be0eb6f6ae9d1d1773497e35",
         "type": "github"
       },
       "original": {
@@ -124,8 +155,26 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1777578337,
+        "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "15f4ee454b1dce334612fa6843b3e05cf546efab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "arduino-index": "arduino-index",
+        "arduino-nix": "arduino-nix",
         "blueprint": "blueprint",
         "devshell": "devshell",
         "flake-utils": "flake-utils",
@@ -135,6 +184,7 @@
           "nix-ros-overlay",
           "nixpkgs"
         ],
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix"
       }

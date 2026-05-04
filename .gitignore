@@ -16,3 +16,6 @@ log
 # python
 **/.venv
 **/__pycache__
+
+# arduino
+.pio

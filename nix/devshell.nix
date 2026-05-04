@@ -38,38 +38,47 @@ perSystem.devshell.mkShell (
         };
 
         commands = [ ];
-        packages = [
+        packages = with pkgs; [
             # ros2 jazzy
-            (
-                with pkgs.rosPackages.jazzy;
-                buildEnv {
-                    wrapPrograms = false;
-                    paths = [
-                        pkgs.colcon
-                        ros-core
+            # (
+            #     with pkgs.rosPackages.jazzy;
+            #     buildEnv {
+            #         wrapPrograms = false;
+            #         paths = [
+            #             pkgs.colcon
+            #             ros-core
+            #
+            #             # Work around https://github.com/lopsided98/nix-ros-overlay/pull/624
+            #             ament-cmake-core
+            #             python-cmake-module
+            #
+            #             # Dependencies from package.xml files
+            #             ament-cmake
+            #             ament-copyright
+            #             ament-flake8
+            #             ament-lint-auto
+            #             ament-lint-common
+            #             ament-pep257
+            #             geometry-msgs
+            #             python3Packages.matplotlib
+            #             python3Packages.numpy
+            #             python3Packages.pytest
+            #             rclpy
+            #             rosidl-default-generators
+            #             rosidl-default-runtime
+            #             tf-transformations
+            #         ];
+            #     }
+            # )
 
-                        # Work around https://github.com/lopsided98/nix-ros-overlay/pull/624
-                        ament-cmake-core
-                        python-cmake-module
+            # c/cpp
+            clang-tools
+            cmake
 
-                        # Dependencies from package.xml files
-                        ament-cmake
-                        ament-copyright
-                        ament-flake8
-                        ament-lint-auto
-                        ament-lint-common
-                        ament-pep257
-                        geometry-msgs
-                        python3Packages.matplotlib
-                        python3Packages.numpy
-                        python3Packages.pytest
-                        rclpy
-                        rosidl-default-generators
-                        rosidl-default-runtime
-                        tf-transformations
-                    ];
-                }
-            )
+            # arduino
+            perSystem.self.arduino-cli
+            perSystem.nixpkgs-unstable.avrdude
+            platformio
         ];
 
         env = [ ];
