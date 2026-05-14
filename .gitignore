@@ -19,3 +19,6 @@ log
 
 # arduino
 .pio
+
+# editors
+.vscode
