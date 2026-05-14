@@ -12,6 +12,7 @@ namespace {
 enum SessionState { IDLE, RUNNING };
 
 double g_setpoint_kpa = 0.0;
+double g_nominal_kpa = 0.0;
 double g_current_kpa = 0.0;
 double g_pid_output = 0.0; // 0-255 PWM
 int g_last_adc = 0;
@@ -90,7 +91,8 @@ void test_mode_loop() {
     protocol_poll();
 
     g_last_adc = analogRead(PIN_PRESSURE);
-    g_current_kpa = adc_to_kpa(g_last_adc);
+    g_nominal_kpa = adc_to_kpa(g_last_adc);
+    g_current_kpa = g_nominal_kpa - SENSOR_AMBIENT_KPA;
 
     // Tolerance is meaningless when setpoint is zero, treat zero setpoint as
     // "at target whenever current is essentially zero"
