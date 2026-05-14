@@ -3,9 +3,9 @@
 #include <Arduino.h>
 
 // Pin assignments
-#define PIN_PRESSURE A0 // analog pressure sensor input
-#define PIN_DEFLATE A1  // deflation solenoid (binary on/off)
-#define PIN_INFLATE A2  // inflation solenoid (PWM)
+#define PIN_PRESSURE A7 // analog pressure sensor input
+#define PIN_DEFLATE A0  // deflation solenoid (binary on/off)
+#define PIN_INFLATE A1  // inflation solenoid (PWM)
 #define PIN_MODE_SELECT                                                        \
     11 // PB3 / D11: LOW at boot -> test mode (uses internal pull-up)
 
